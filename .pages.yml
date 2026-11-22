@@ -1,0 +1,53 @@
+media: assets/uploads
+
+content:
+  - name: posts
+    label: Posts & Insights
+    type: collection
+    path: _posts
+    format: yaml-frontmatter
+    filename: "{year}-{month}-{day}-{title}.md"
+    view:
+      fields: [title, date, category, published]
+      primary: title
+      sort: [date, title]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: title
+        label: Post title
+        type: string
+        required: true
+      - name: date
+        label: Publication date
+        type: date
+        required: true
+      - name: description
+        label: Short summary
+        type: text
+      - name: image
+        label: Cover image
+        type: image
+      - name: category
+        label: Main topic
+        type: select
+        options:
+          values:
+            - Sourcing
+            - Product Development
+            - Knitwear
+            - Industry
+            - Buyer Insights
+      - name: tags
+        label: Tags (comma separated)
+        type: string
+        description: "Example: Bangladesh sourcing, knitwear, product development"
+      - name: published
+        label: Publish this post
+        type: boolean
+        default: true
+      - name: body
+        label: Article content
+        type: rich-text
+        required: true
